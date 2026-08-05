@@ -39,6 +39,21 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-subtle: var(--primary-subtle);
+  --color-primary-border: var(--primary-border);
+  --color-accent-subtle: var(--accent-subtle);
+  --color-accent-strong: var(--accent-strong);
+  --color-destructive-strong: var(--destructive-strong);
+  --color-destructive-subtle: var(--destructive-subtle);
+  --color-success: var(--success);
+  --color-success-subtle: var(--success-subtle);
+  --color-border-subtle: var(--border-subtle);
+  --shadow-sm: 0 2px 8px rgba(24, 24, 27, 0.08);
+  --shadow-md: 0 10px 26px rgba(24, 24, 27, 0.08);
+  --shadow-lg: 0 16px 34px rgba(24, 24, 27, 0.1);
+  --shadow-xl: 0 24px 60px rgba(24, 24, 27, 0.12);
+  --shadow-primary: 0 6px 18px rgba(168, 6, 137, 0.22);
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
   --radius-lg: var(--radius);
@@ -49,22 +64,32 @@
 }
 
 :root {
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: #18181b;
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --primary: #a80689;
+  --primary-foreground: #ffffff;
+  --primary-hover: #8a0570;
+  --primary-subtle: #f7e6f2;
+  --primary-border: #f0d5e8;
+  --secondary: #efeff2;
+  --secondary-foreground: #3f3f46;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #ff9f1c;
+  --accent-foreground: #3d2500;
+  --accent-subtle: #fff1dc;
+  --accent-strong: #b36a00;
+  --destructive: #dc2626;
+  --destructive-strong: #b4232a;
+  --destructive-subtle: #fef2f2;
+  --success: #0f7b4f;
+  --success-subtle: #e6f5ee;
+  --border: #e4e4e7;
+  --border-subtle: #f0f0f0;
+  --input: #e4e4e7;
+  --ring: #a80689;
   --chart-1: oklch(0.87 0 0);
   --chart-2: oklch(0.556 0 0);
   --chart-3: oklch(0.439 0 0);
@@ -79,8 +104,10 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: #fafafa;
+  --foreground: #18181b;
+  --font-wongnok-sans:
+    "IBM Plex Sans Thai", "IBM Plex Sans", system-ui, sans-serif;
 }
 
 .dark {
@@ -127,7 +154,61 @@
   html {
     @apply font-sans;
   }
-  button:not(:disabled), [role="button"]:not(:disabled) {
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
     cursor: pointer;
+  }
+}
+
+@layer components {
+  .wongnok-text-h1 {
+    font-family: var(--font-wongnok-sans);
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .wongnok-text-h2 {
+    font-family: var(--font-wongnok-sans);
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+  }
+  .wongnok-text-h3 {
+    font-family: var(--font-wongnok-sans);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+  .wongnok-text-base {
+    font-family: var(--font-wongnok-sans);
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  .wongnok-text-body {
+    font-family: var(--font-wongnok-sans);
+    font-size: 0.9375rem;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+  .wongnok-text-sm {
+    font-family: var(--font-wongnok-sans);
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .wongnok-text-xs {
+    font-family: var(--font-wongnok-sans);
+    font-size: 0.8125rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .wongnok-text-label {
+    font-family: var(--font-wongnok-sans);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
   }
 }

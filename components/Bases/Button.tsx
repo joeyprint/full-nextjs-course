@@ -82,13 +82,16 @@ const buttonVariants = cva(
 );
 
 export type ButtonProps = ButtonPrimitive.Props &
-  VariantProps<typeof buttonVariants>;
+  VariantProps<typeof buttonVariants> & {
+    loading?: boolean;
+  };
 
 function Button({
   className,
   variant = "contained",
   size = "medium",
   color = "primary",
+  loading = false,
   ...props
 }: ButtonProps) {
   return (
@@ -96,7 +99,10 @@ function Button({
       data-slot="button"
       className={cn(buttonVariants({ variant, size, color, className }))}
       {...props}
-    />
+      disabled={loading || props.disabled}
+    >
+      {loading ? <p>Loading...</p> : props.children}
+    </ButtonPrimitive>
   );
 }
 

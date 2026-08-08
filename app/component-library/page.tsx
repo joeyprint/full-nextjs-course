@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import BadgeLibrary from "./_components/BadgeLibrary";
 import ButtonLibrary from "./_components/ButtonLibrary";
 import LibraryNav from "./_components/LibraryNav";
+import TextFieldLibrary from "./_components/TextFieldLibrary";
 
 export const metadata: Metadata = {
   title: "Component Library",
@@ -34,6 +35,7 @@ export default function ComponentLibraryPage() {
 
         <ButtonLibrary />
         <BadgeLibrary />
+        <TextFieldLibrary />
       </main>
     </div>
   );

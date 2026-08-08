@@ -28,7 +28,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable)}
+      data-scroll-behavior="smooth"
+      className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-sans", inter.variable, "motion-safe:scroll-smooth")}
     >
       <body className="min-h-full flex flex-col">{children}</body>
     </html>

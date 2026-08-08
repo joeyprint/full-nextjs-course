@@ -1,4 +1,7 @@
 import Image from "next/image";
+import Link from "next/link";
+
+import { Button } from "@/components/Bases";
 
 export default function Home() {
   return (
@@ -58,6 +61,13 @@ export default function Home() {
           >
             Documentation
           </a>
+          <Button
+            render={<Link href="/component-library" />}
+            nativeButton={false}
+            size="large"
+          >
+            Component Library
+          </Button>
         </div>
       </main>
     </div>

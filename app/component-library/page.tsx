@@ -4,6 +4,7 @@ import AvatarLibrary from "./_components/AvatarLibrary";
 import BadgeLibrary from "./_components/BadgeLibrary";
 import ButtonLibrary from "./_components/ButtonLibrary";
 import LibraryNav from "./_components/LibraryNav";
+import RecipeCardLibrary from "./_components/RecipeCardLibrary";
 import TextFieldLibrary from "./_components/TextFieldLibrary";
 
 export const metadata: Metadata = {
@@ -28,7 +29,7 @@ export default function ComponentLibraryPage() {
           <p className="wongnok-text-body text-muted-foreground">
             Every variant of every component in{" "}
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
-              @/components/Bases
+              @/components
             </code>
             .
           </p>
@@ -38,6 +39,7 @@ export default function ComponentLibraryPage() {
         <BadgeLibrary />
         <TextFieldLibrary />
         <AvatarLibrary />
+        <RecipeCardLibrary />
       </main>
     </div>
   );

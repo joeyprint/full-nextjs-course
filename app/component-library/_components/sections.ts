@@ -3,4 +3,5 @@ export const SECTIONS = [
   { id: "badge", title: "Badge" },
   { id: "text-field", title: "TextField" },
   { id: "avatar", title: "Avatar" },
+  { id: "recipe-card", title: "RecipeCard" },
 ] as const;

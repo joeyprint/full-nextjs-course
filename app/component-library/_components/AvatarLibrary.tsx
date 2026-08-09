@@ -135,15 +135,13 @@ function AvatarLibrary() {
 
         <div className="flex flex-col gap-3">
           <p className="wongnok-text-sm text-muted-foreground">
-            {/* `total` covers server-paginated lists: the chip counts people the
-                array never carried. */}
-            max=3, total=12 — the chip counts from{" "}
+            Without{" "}
             <code className="rounded bg-muted px-1.5 py-0.5 font-mono text-sm">
-              total
+              max
             </code>
-            , not the array.
+            , every avatar renders and no chip appears.
           </p>
-          <AvatarGroup avatars={TEAM} max={3} total={12} />
+          <AvatarGroup avatars={TEAM} />
         </div>
       </div>
     </LibrarySection>

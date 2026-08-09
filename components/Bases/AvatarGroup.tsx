@@ -39,7 +39,6 @@ export type AvatarGroupProps = React.ComponentProps<"div"> &
   VariantProps<typeof avatarGroupVariants> & {
     avatars: AvatarGroupItem[];
     max?: number;
-    total?: number;
     variant?: AvatarProps["variant"];
   };
 
@@ -48,13 +47,12 @@ function AvatarGroup({
   spacing = "medium",
   avatars,
   max,
-  total,
   size = "medium",
   variant = "circular",
   ...props
 }: AvatarGroupProps) {
   const visible = avatars.slice(0, Math.max(0, max ?? avatars.length));
-  const overflow = Math.max(0, (total ?? avatars.length) - visible.length);
+  const overflow = avatars.length - visible.length;
 
   return (
     <div

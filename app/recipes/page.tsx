@@ -1,5 +1,5 @@
 import { Container } from "@/components/Bases";
-import RecipeCard from "@/components/RecipeCard";
+import RecipeList from "./_containers/RecipeList";
 
 const RecipesPage = () => {
   return (
@@ -10,14 +10,7 @@ const RecipesPage = () => {
           8 recipes from home cooks · page 1 of 7
         </p>
         <div className="grid grid-cols-4 gap-4 mt-7">
-          {Array.from({ length: 12 }).map((_, index) => (
-            <RecipeCard
-              key={`recipe-${index}`}
-              name={`recipe ${index + 1}`}
-              level="EASY"
-              owner={{ name: "john doe" }}
-            />
-          ))}
+          <RecipeList />
         </div>
       </Container>
     </div>

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import AvatarLibrary from "./_components/AvatarLibrary";
 import BadgeLibrary from "./_components/BadgeLibrary";
 import ButtonLibrary from "./_components/ButtonLibrary";
 import LibraryNav from "./_components/LibraryNav";
@@ -36,6 +37,7 @@ export default function ComponentLibraryPage() {
         <ButtonLibrary />
         <BadgeLibrary />
         <TextFieldLibrary />
+        <AvatarLibrary />
       </main>
     </div>
   );

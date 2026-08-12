@@ -5,6 +5,7 @@ import BadgeLibrary from "./_components/BadgeLibrary";
 import ButtonLibrary from "./_components/ButtonLibrary";
 import LibraryNav from "./_components/LibraryNav";
 import RecipeCardLibrary from "./_components/RecipeCardLibrary";
+import SelectLibrary from "./_components/SelectLibrary";
 import TextareaLibrary from "./_components/TextareaLibrary";
 import TextFieldLibrary from "./_components/TextFieldLibrary";
 
@@ -40,6 +41,7 @@ export default function ComponentLibraryPage() {
         <BadgeLibrary />
         <TextFieldLibrary />
         <TextareaLibrary />
+        <SelectLibrary />
         <AvatarLibrary />
         <RecipeCardLibrary />
       </main>

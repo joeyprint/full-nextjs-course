@@ -5,8 +5,6 @@ import type { ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* Border, background and focus ring live on the wrapper rather than the input
-   so the adornments sit inside the same box as the text. */
 const textFieldVariants = cva(
   "group/text-field flex w-full items-center rounded-lg border text-foreground transition-all has-[input:disabled]:pointer-events-none has-[input:disabled]:bg-muted has-[input:disabled]:text-muted-foreground/50",
   {
@@ -34,17 +32,12 @@ const textFieldVariants = cva(
   },
 );
 
-/* `size` is omitted because the native input attribute (a character count)
-   collides with the variant axis. */
 export type TextFieldProps = Omit<InputPrimitive.Props, "size" | "className"> &
   VariantProps<typeof textFieldVariants> & {
-    /** Styles the control box — the bordered wrapper around the input. */
     className?: string;
-    /** Styles the outermost element. Escape hatch for layout (width, margin). */
     rootClassName?: string;
     label?: ReactNode;
     helperText?: ReactNode;
-    /** Replaces `helperText` and forces the error styling when present. */
     errorMessage?: ReactNode;
     startAdornment?: ReactNode;
     endAdornment?: ReactNode;
@@ -97,8 +90,6 @@ function TextField({
           </span>
         ) : null}
 
-        {/* Typography comes from the wrapper — preflight gives inputs
-            `font: inherit`, so the size variant reaches the text. */}
         <InputPrimitive
           data-slot="text-field-input"
           className="min-w-0 flex-1 bg-transparent text-inherit outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed"

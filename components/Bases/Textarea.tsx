@@ -4,8 +4,6 @@ import type { ComponentProps, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* Border, background and focus ring live on the wrapper rather than the
-   textarea so the box matches TextField's control exactly. */
 const textareaVariants = cva(
   "group/textarea flex w-full rounded-lg border text-foreground transition-all has-[textarea:disabled]:pointer-events-none has-[textarea:disabled]:bg-muted has-[textarea:disabled]:text-muted-foreground/50",
   {
@@ -35,13 +33,10 @@ const textareaVariants = cva(
 
 export type TextareaProps = Omit<ComponentProps<"textarea">, "className"> &
   VariantProps<typeof textareaVariants> & {
-    /** Styles the control box — the bordered wrapper around the textarea. */
     className?: string;
-    /** Styles the outermost element. Escape hatch for layout (width, margin). */
     rootClassName?: string;
     label?: ReactNode;
     helperText?: ReactNode;
-    /** Replaces `helperText` and forces the error styling when present. */
     errorMessage?: ReactNode;
   };
 
@@ -82,9 +77,6 @@ function Textarea({
           textareaVariants({ variant, size, error: hasError, className }),
         )}
       >
-        {/* Base UI has no textarea primitive — `render` swaps Field.Control's
-            element, and the render element's props win the merge, so `rows`
-            and the caller's attributes belong there rather than on Control. */}
         <Field.Control
           data-slot="textarea-input"
           className="min-w-0 flex-1 resize-y bg-transparent text-inherit outline-none placeholder:text-muted-foreground disabled:cursor-not-allowed"

@@ -9,8 +9,6 @@ import type { ComponentProps, ReactNode } from "react";
 
 import { cn } from "@/lib/utils";
 
-/* The trigger *is* the control box — unlike TextField there's no wrapper to
-   hang the border on, so the box styles live on the button itself. */
 const selectVariants = cva(
   "group/select flex w-full items-center justify-between rounded-lg border text-foreground transition-all data-disabled:pointer-events-none data-disabled:bg-muted data-disabled:text-muted-foreground/50",
   {
@@ -25,8 +23,6 @@ const selectVariants = cva(
         large: "gap-2 px-4 py-2.5 wongnok-text-base",
       },
       error: {
-        /* `focus-visible` rather than TextField's `focus-within` — the trigger
-           is a button, so the ring should only show for keyboard focus. */
         false:
           "focus-visible:border-primary focus-visible:ring-3 focus-visible:ring-primary/12 data-popup-open:border-primary",
         true: "border-destructive-strong focus-visible:ring-3 focus-visible:ring-destructive-strong/12",
@@ -41,35 +37,25 @@ const selectVariants = cva(
 );
 
 type SelectOption = {
-  /** Text shown in the popup row and, once selected, in the trigger. */
   label: ReactNode;
-  /** Submitted value for this option. */
   value: string;
-  /** Per-option lockout — the row renders muted and can't be selected. */
   disabled?: boolean;
 };
 
-/* `multiple` is omitted so `value` stays a plain string; `items` is derived
-   from `options` instead of being passed by the caller. */
 export type SelectProps = Omit<
   SelectRootProps<string>,
   "items" | "children" | "multiple"
 > &
   VariantProps<typeof selectVariants> & {
     options: SelectOption[];
-    /** Styles the control box — the trigger button. */
     className?: string;
-    /** Styles the outermost element. Escape hatch for layout (width, margin). */
     rootClassName?: string;
     popupClassName?: string;
-    /** Raw attributes for the trigger button (aria-*, data-*, ref-free props). */
     triggerProps?: ComponentProps<"button">;
     label?: ReactNode;
     helperText?: ReactNode;
-    /** Replaces `helperText` and forces the error styling when present. */
     errorMessage?: ReactNode;
     placeholder?: ReactNode;
-    /** Shown in place of the list when `options` is empty. */
     emptyMessage?: ReactNode;
   };
 
@@ -99,13 +85,8 @@ function Select({
       disabled={disabled}
       invalid={hasError || undefined}
     >
-      {/* `items` lets Select.Value render the option's label instead of the
-          raw value once something is selected. */}
       <SelectPrimitive.Root items={options} disabled={disabled} {...props}>
         {label ? (
-          /* Select.Label, not Field.Label — a native <label htmlFor> can't
-             target a button, so this renders a <div> the trigger references
-             through aria-labelledby. */
           <SelectPrimitive.Label
             data-slot="select-label"
             className="wongnok-text-label font-bold text-foreground data-disabled:text-muted-foreground/50"
@@ -135,8 +116,6 @@ function Select({
         </SelectPrimitive.Trigger>
 
         <SelectPrimitive.Portal>
-          {/* `alignItemWithTrigger={false}` keeps the popup below the trigger
-              instead of overlaying it, which reads better with a visible box. */}
           <SelectPrimitive.Positioner
             sideOffset={4}
             alignItemWithTrigger={false}
@@ -164,10 +143,6 @@ function Select({
                       data-slot="select-item"
                       value={option.value}
                       disabled={option.disabled}
-                      /* Base UI still highlights disabled items so screen
-                         readers announce them, so the highlight styles are
-                         gated on `not-data-disabled` rather than relying on
-                         class order to lose to the disabled styles. */
                       className="wongnok-text-sm relative flex cursor-pointer items-center rounded-md py-1.5 pr-8 pl-2.5 text-foreground outline-none select-none not-data-disabled:data-highlighted:bg-primary-subtle not-data-disabled:data-highlighted:text-primary data-disabled:pointer-events-none data-disabled:text-muted-foreground/50 data-selected:font-bold"
                     >
                       <SelectPrimitive.ItemText className="min-w-0 flex-1 truncate">

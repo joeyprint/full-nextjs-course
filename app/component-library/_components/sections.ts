@@ -4,6 +4,7 @@ export const SECTIONS = [
   { id: "text-field", title: "TextField" },
   { id: "textarea", title: "Textarea" },
   { id: "select", title: "Select" },
+  { id: "radio", title: "Radio" },
   { id: "avatar", title: "Avatar" },
   { id: "recipe-card", title: "RecipeCard" },
 ] as const;

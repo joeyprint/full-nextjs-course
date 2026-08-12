@@ -7,6 +7,7 @@ import AvatarGroup, {
 import Badge, { type BadgeProps } from "./Badge";
 import Button, { type ButtonProps } from "./Button";
 import Container, { type ContainerProps } from "./Container";
+import Textarea, { textareaVariants, type TextareaProps } from "./Textarea";
 import TextField, { type TextFieldProps } from "./TextField";
 
 export type {
@@ -16,6 +17,7 @@ export type {
   BadgeProps,
   ButtonProps,
   ContainerProps,
+  TextareaProps,
   TextFieldProps,
 };
 export {
@@ -26,5 +28,7 @@ export {
   Badge,
   Button,
   Container,
+  Textarea,
+  textareaVariants,
   TextField,
 };

@@ -5,6 +5,7 @@ import BadgeLibrary from "./_components/BadgeLibrary";
 import ButtonLibrary from "./_components/ButtonLibrary";
 import LibraryNav from "./_components/LibraryNav";
 import RecipeCardLibrary from "./_components/RecipeCardLibrary";
+import TextareaLibrary from "./_components/TextareaLibrary";
 import TextFieldLibrary from "./_components/TextFieldLibrary";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function ComponentLibraryPage() {
         <ButtonLibrary />
         <BadgeLibrary />
         <TextFieldLibrary />
+        <TextareaLibrary />
         <AvatarLibrary />
         <RecipeCardLibrary />
       </main>

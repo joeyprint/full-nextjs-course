@@ -1,7 +1,10 @@
 import { Button, Container, TextField } from "@/components/Bases";
 import { XIcon } from "lucide-react";
+import { useFormContext } from "react-hook-form";
 
 const RecipeCreationIngredientFormFields = () => {
+  const { register } = useFormContext();
+
   return (
     <Container className="mt-6">
       <div className="bg-white p-7 rounded-3xl">
@@ -17,9 +20,9 @@ const RecipeCreationIngredientFormFields = () => {
               </p>
             </div>
             <TextField
-              name={`ingredient-${index + 1}`}
               placeholder={"e.g. 2 tbsp fish sauce"}
               rootClassName="w-full"
+              {...register(`ingredient.${index}`)}
             />
             <Button type={"button"} variant={"outlined"} color={"error"}>
               <XIcon />

@@ -1,7 +1,10 @@
 import { Button, Container, Textarea } from "@/components/Bases";
 import { XIcon } from "lucide-react";
+import { useFormContext } from "react-hook-form";
 
 const RecipeCreationHowFormFields = () => {
+  const { register } = useFormContext();
+
   return (
     <Container className="mt-6">
       <div className="bg-white p-7  rounded-3xl">
@@ -17,9 +20,9 @@ const RecipeCreationHowFormFields = () => {
               </p>
             </div>
             <Textarea
-              name={`how-${index + 1}`}
               placeholder={`Step ${index + 1} — what happens, and how you know it's ready.`}
               rootClassName="w-full"
+              {...register(`howToMakes.${index}`)}
             />
             <Button type={"button"} variant={"outlined"} color={"error"}>
               <XIcon />

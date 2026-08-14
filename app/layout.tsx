@@ -40,8 +40,8 @@ export default function RootLayout({
         "motion-safe:scroll-smooth",
       )}
     >
-      <Navbar />
       <body className="min-h-full flex flex-col">
+        <Navbar />
         <div className="pt-16">{children}</div>
       </body>
     </html>

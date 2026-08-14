@@ -1,9 +1,18 @@
 import { Button, Container, Textarea } from "@/components/Bases";
 import { XIcon } from "lucide-react";
-import { useFormContext } from "react-hook-form";
+import { useFieldArray, useFormContext } from "react-hook-form";
 
 const RecipeCreationHowFormFields = () => {
   const { register } = useFormContext();
+  const { fields, append, remove } = useFieldArray({ name: "howToMakes" });
+
+  const handleAddNewIngredient = () => {
+    append({});
+  };
+
+  const handleRemoveIngredient = (index: number) => {
+    remove(index);
+  };
 
   return (
     <Container className="mt-6">
@@ -12,7 +21,7 @@ const RecipeCreationHowFormFields = () => {
         <p className="wongnok-text-body text-muted-foreground">
           {`Write it the way you'd say it out loud. Short steps are easiest to follow.`}
         </p>
-        {Array.from({ length: 3 }).map((_, index) => (
+        {fields.map((_, index) => (
           <div key={index} className="flex items-start gap-4 mt-6">
             <div className="p-2 w-6 h-6 wongnok-text-xs font-bold bg-primary-subtle text-primary relative rounded-4xl">
               <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -22,13 +31,21 @@ const RecipeCreationHowFormFields = () => {
             <Textarea
               placeholder={`Step ${index + 1} — what happens, and how you know it's ready.`}
               rootClassName="w-full"
-              {...register(`howToMakes.${index}`)}
+              {...register(`howToMakes.${index}.value`)}
             />
-            <Button type={"button"} variant={"outlined"} color={"error"}>
+            <Button
+              type={"button"}
+              variant={"outlined"}
+              color={"error"}
+              onClick={() => handleRemoveIngredient(index)}
+            >
               <XIcon />
             </Button>
           </div>
         ))}
+        <Button className={"mt-4"} onClick={handleAddNewIngredient}>
+          Add How to Make
+        </Button>
       </div>
     </Container>
   );

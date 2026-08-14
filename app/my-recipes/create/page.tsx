@@ -15,12 +15,14 @@ interface RecipeCreationFormValues {
   imageUrl?: string;
   level: string;
   time: string;
-  ingredient: string[];
-  howToMakes: string[];
+  ingredient: { value: string }[];
+  howToMakes: { value: string }[];
 }
 
 const defaultRecipeCreationValue: RecipeCreationFormValues = {
   time: "JUST_MINUTES",
+  ingredient: [{}],
+  howToMakes: [{}],
 } as RecipeCreationFormValues;
 
 const RecipeCreationPage = () => {

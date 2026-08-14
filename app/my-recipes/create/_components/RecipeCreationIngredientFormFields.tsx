@@ -2,12 +2,24 @@ import { Button, Container, TextField } from "@/components/Bases";
 import { XIcon } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
+import type { RecipeCreationFormValues } from "../_containers/recipeCreationValidation";
+
 const RecipeCreationIngredientFormFields = () => {
-  const { register } = useFormContext();
-  const { fields, append, remove } = useFieldArray({ name: "ingredient" });
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = useFormContext<RecipeCreationFormValues>();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "ingredient",
+  });
+
+  const ingredientListError =
+    errors.ingredient?.root?.message ?? errors.ingredient?.message;
 
   const handleAddNewIngredient = () => {
-    append("");
+    append({ value: "" });
   };
 
   const handleRemoveIngredient = (index: number) => {
@@ -32,6 +44,7 @@ const RecipeCreationIngredientFormFields = () => {
               placeholder={"e.g. 2 tbsp fish sauce"}
               rootClassName="w-full"
               {...register(`ingredient.${index}.value`)}
+              errorMessage={errors.ingredient?.[index]?.value?.message}
             />
             <Button
               type={"button"}
@@ -43,6 +56,11 @@ const RecipeCreationIngredientFormFields = () => {
             </Button>
           </div>
         ))}
+        {ingredientListError && (
+          <p className="wongnok-text-xs text-destructive-strong mt-6">
+            {ingredientListError}
+          </p>
+        )}
         <Button className={"mt-4"} onClick={handleAddNewIngredient}>
           Add Ingredient
         </Button>

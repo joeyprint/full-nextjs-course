@@ -1,6 +1,8 @@
 import { Container, Radio, RadioGroup, Select } from "@/components/Bases";
 import { Controller, useFormContext } from "react-hook-form";
 
+import type { RecipeCreationFormValues } from "../_containers/recipeCreationValidation";
+
 const recipeLevelOptions = [
   { label: "Easy", value: "EASY" },
   { label: "Medium", value: "MEDIUM" },
@@ -8,7 +10,10 @@ const recipeLevelOptions = [
 ];
 
 const RecipeCreationEffortFormFields = () => {
-  const { control } = useFormContext();
+  const {
+    control,
+    formState: { errors },
+  } = useFormContext<RecipeCreationFormValues>();
 
   return (
     <Container className="mt-6">
@@ -31,6 +36,7 @@ const RecipeCreationEffortFormFields = () => {
                   {...field}
                   value={field.value}
                   onValueChange={field.onChange}
+                  errorMessage={errors.level?.message}
                 />
               )}
             />
@@ -49,6 +55,7 @@ const RecipeCreationEffortFormFields = () => {
                   {...field}
                   value={field.value}
                   onChange={field.onChange}
+                  errorMessage={errors.time?.message}
                 >
                   <Radio label={"5 - 10 mins"} value={"JUST_MINUTES"} />
                   <Radio label={"10 - 30 mins"} value={"HALF_HOUR"} />

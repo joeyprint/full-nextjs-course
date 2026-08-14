@@ -2,12 +2,24 @@ import { Button, Container, Textarea } from "@/components/Bases";
 import { XIcon } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
 
+import type { RecipeCreationFormValues } from "../_containers/recipeCreationValidation";
+
 const RecipeCreationHowFormFields = () => {
-  const { register } = useFormContext();
-  const { fields, append, remove } = useFieldArray({ name: "howToMakes" });
+  const {
+    register,
+    control,
+    formState: { errors },
+  } = useFormContext<RecipeCreationFormValues>();
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "howToMakes",
+  });
+
+  const howToMakeListError =
+    errors.howToMakes?.root?.message ?? errors.howToMakes?.message;
 
   const handleAddNewIngredient = () => {
-    append({});
+    append({ value: "" });
   };
 
   const handleRemoveIngredient = (index: number) => {
@@ -32,6 +44,7 @@ const RecipeCreationHowFormFields = () => {
               placeholder={`Step ${index + 1} — what happens, and how you know it's ready.`}
               rootClassName="w-full"
               {...register(`howToMakes.${index}.value`)}
+              errorMessage={errors.howToMakes?.[index]?.value?.message}
             />
             <Button
               type={"button"}
@@ -43,6 +56,11 @@ const RecipeCreationHowFormFields = () => {
             </Button>
           </div>
         ))}
+        {howToMakeListError && (
+          <p className="wongnok-text-xs text-destructive-strong mt-6">
+            {howToMakeListError}
+          </p>
+        )}
         <Button className={"mt-4"} onClick={handleAddNewIngredient}>
           Add How to Make
         </Button>

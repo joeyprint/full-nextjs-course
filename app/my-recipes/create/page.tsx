@@ -8,27 +8,23 @@ import {
   RecipeCreationIngredientFormFields,
 } from "./_components";
 import { FormProvider, useForm } from "react-hook-form";
-
-interface RecipeCreationFormValues {
-  name: string;
-  description: string;
-  imageUrl?: string;
-  level: string;
-  time: string;
-  ingredient: { value: string }[];
-  howToMakes: { value: string }[];
-}
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  recipeCreationSchema,
+  type RecipeCreationFormValues,
+} from "./_containers/recipeCreationValidation";
 
 const defaultRecipeCreationValue: RecipeCreationFormValues = {
   time: "JUST_MINUTES",
-  ingredient: [{}],
-  howToMakes: [{}],
+  ingredient: [{ value: "" }],
+  howToMakes: [{ value: "" }],
 } as RecipeCreationFormValues;
 
 const RecipeCreationPage = () => {
   const formContext = useForm<RecipeCreationFormValues>({
     defaultValues: { ...defaultRecipeCreationValue },
     mode: "onTouched",
+    resolver: zodResolver(recipeCreationSchema),
   });
 
   const handleSubmit = (formValues: RecipeCreationFormValues) => {

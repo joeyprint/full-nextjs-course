@@ -1,8 +1,14 @@
 import { Container, Textarea, TextField } from "@/components/Bases";
 import { useFormContext } from "react-hook-form";
 
+import type { RecipeCreationFormValues } from "../_containers/recipeCreationValidation";
+
 const RecipeCreationDishFormFields = () => {
-  const { register } = useFormContext();
+  const {
+    register,
+    formState: { errors },
+  } = useFormContext<RecipeCreationFormValues>();
+
   return (
     <Container className="mt-6">
       <div className="bg-white p-7 mt-6 rounded-3xl">
@@ -16,6 +22,7 @@ const RecipeCreationDishFormFields = () => {
           required
           rootClassName={"mt-6"}
           {...register("name")}
+          errorMessage={errors.name?.message}
         />
         <Textarea
           label={"Menu Description"}
@@ -23,6 +30,7 @@ const RecipeCreationDishFormFields = () => {
           required
           rootClassName={"mt-6"}
           {...register("description")}
+          errorMessage={errors.description?.message}
         />
         <TextField
           label={"Image URL"}
@@ -30,6 +38,7 @@ const RecipeCreationDishFormFields = () => {
           helperText={"Paste a link to a photo — landscape works best."}
           rootClassName={"mt-6"}
           {...register("imageUrl")}
+          errorMessage={errors.imageUrl?.message}
         />
       </div>
     </Container>

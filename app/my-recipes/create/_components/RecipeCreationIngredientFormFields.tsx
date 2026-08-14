@@ -1,7 +1,6 @@
 import { Button, Container, TextField } from "@/components/Bases";
 import { XIcon } from "lucide-react";
 import { useFieldArray, useFormContext } from "react-hook-form";
-import { Fragment } from "react/jsx-runtime";
 
 const RecipeCreationIngredientFormFields = () => {
   const { register } = useFormContext();

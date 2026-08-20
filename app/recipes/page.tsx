@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@/components/Bases";
 import RecipeList from "./_containers/RecipeList";
 
@@ -9,9 +11,7 @@ const RecipesPage = () => {
         <p className="wongnok-text-body text-muted-foreground mt-2">
           8 recipes from home cooks · page 1 of 7
         </p>
-        <div className="grid grid-cols-4 gap-4 mt-7">
-          <RecipeList />
-        </div>
+        <RecipeList />
       </Container>
     </div>
   );

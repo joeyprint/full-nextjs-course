@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "./_containers/Navbar";
+import TanstackQueryProviders from "@/providers/TanstackQueryProviders";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -41,8 +42,10 @@ export default function RootLayout({
       )}
     >
       <body className="min-h-full flex flex-col">
-        <Navbar />
-        <div className="pt-16">{children}</div>
+        <TanstackQueryProviders>
+          <Navbar />
+          <div className="pt-16">{children}</div>
+        </TanstackQueryProviders>
       </body>
     </html>
   );
